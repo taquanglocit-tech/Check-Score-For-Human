@@ -106,10 +106,10 @@ export default function BenchmarkDashboard({
         parent_id: source === 'assisted' ? aiParent : undefined,
         total_seconds: seconds,
       });
-      setStatus(`✅ Đã nạp thành công bộ nhãn ${source.toUpperCase()} từ CVAT!`);
+      setStatus(`Đã lưu trữ thành công bộ nhãn ${source.toUpperCase()} từ CVAT.`);
       await onRefresh();
     } catch (e) {
-      setStatus(`❌ Lỗi: ${String(e)}`);
+      setStatus(`Lỗi: ${String(e)}`);
     } finally {
       setLoading(false);
     }
@@ -117,13 +117,13 @@ export default function BenchmarkDashboard({
 
   async function runBenchmark() {
     setLoading(true);
-    setStatus('Đang thực thi so sánh Hungarian matching trên toàn bộ ảnh…');
+    setStatus('Đang thực thi thuật toán Hungarian matching trên toàn bộ tập ảnh…');
     try {
       const res = await api<BenchmarkResponse>(`/projects/${project.id}/benchmark?iou_threshold=${threshold}`);
       setBenchmark(res);
-      setStatus('✅ Đã tính toán xong chỉ số Benchmark!');
+      setStatus('Đã hoàn tất tính toán các chỉ số Benchmark.');
     } catch (e) {
-      setStatus(`❌ ${String(e)}`);
+      setStatus(`Lỗi: ${String(e)}`);
     } finally {
       setLoading(false);
     }
@@ -140,26 +140,26 @@ export default function BenchmarkDashboard({
     <div style={{ display: 'grid', gap: '24px' }}>
       {/* KHỐI 1: PHÒNG THÍ NGHIỆM ĐO THỜI GIAN & NẠP ZIP TỪ CVAT */}
       <section className="panel" style={{ borderLeft: '4px solid #147d70' }}>
-        <h2>⏱️ Phòng Thử Nghiệm Bấm Giờ & Nạp Dữ Liệu CVAT</h2>
+        <h2>Ghi nhận dữ liệu thực nghiệm</h2>
         <p className="muted">
-          Thực hiện theo đúng luồng khoa học: Đo thời gian thao tác gán nhãn thực tế trên CVAT rồi nạp tệp ZIP COCO 1.0 vào hệ thống.
+          Đo lường thời gian thao tác và nạp tệp nhãn xuất định dạng COCO 1.0 từ công cụ gán nhãn.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginTop: '16px' }}>
           {/* LƯỢT 1: ASSISTED (SỬA NHÃN AI) */}
           <div style={{ background: '#f8fafc', padding: '16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-            <h3 style={{ margin: '0 0 8px', color: '#0369a1' }}>⚡ 1. Sửa Nhãn AI (Assisted)</h3>
-            <p className="muted" style={{ fontSize: '12px' }}>Dùng nhãn AI làm khung, người dùng chỉ nắn viền & xóa box sai trên CVAT.</p>
+            <h3 style={{ margin: '0 0 8px', color: '#0369a1' }}>1. Hỗ trợ mô hình (Assisted)</h3>
+            <p className="muted" style={{ fontSize: '12px' }}>Dùng nhãn AI làm khung tham chiếu, người gán nhãn chỉ nắn chỉnh và bổ sung.</p>
             <div style={{ fontSize: '28px', fontWeight: 'bold', fontFamily: 'monospace', margin: '12px 0', color: '#0284c7' }}>
               {formatDuration(astSec)}
             </div>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-              <button disabled={astRunning} onClick={() => setAstRunning(true)} style={{ background: '#0284c7' }}>▶ Bắt đầu</button>
-              <button disabled={!astRunning} onClick={() => setAstRunning(false)} className="secondary">⏸ Tạm dừng</button>
-              <button onClick={() => { setAstRunning(false); setAstSec(0); }} className="secondary">⏹ Đặt lại</button>
+              <button disabled={astRunning} onClick={() => setAstRunning(true)} style={{ background: '#0284c7' }}>Bắt đầu</button>
+              <button disabled={!astRunning} onClick={() => setAstRunning(false)} className="secondary">Tạm dừng</button>
+              <button onClick={() => { setAstRunning(false); setAstSec(0); }} className="secondary">Đặt lại</button>
             </div>
             <label className="drop" style={{ background: 'white' }}>
-              <span>📦 Tải Task_Assisted.zip từ CVAT</span>
+              <span>Tải tệp Task_Assisted.zip từ CVAT</span>
               <input
                 disabled={loading}
                 type="file"
@@ -171,23 +171,23 @@ export default function BenchmarkDashboard({
                 }}
               />
             </label>
-            {hasAst && <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: 600 }}>✓ Đã có dữ liệu nhãn</span>}
+            {hasAst && <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: 600 }}>Đã nạp dữ liệu</span>}
           </div>
 
           {/* LƯỢT 2: MANUAL (VẼ TAY 100%) */}
           <div style={{ background: '#f8fafc', padding: '16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-            <h3 style={{ margin: '0 0 8px', color: '#b45309' }}>🖐️ 2. Vẽ Thủ Công (Manual)</h3>
-            <p className="muted" style={{ fontSize: '12px' }}>Người dùng tự vẽ toàn bộ hộp từ đầu trên CVAT không có trợ giúp.</p>
+            <h3 style={{ margin: '0 0 8px', color: '#b45309' }}>2. Thủ công (Manual)</h3>
+            <p className="muted" style={{ fontSize: '12px' }}>Người gán nhãn tự vẽ toàn bộ hộp từ đầu không có gợi ý từ mô hình.</p>
             <div style={{ fontSize: '28px', fontWeight: 'bold', fontFamily: 'monospace', margin: '12px 0', color: '#d97706' }}>
               {formatDuration(manSec)}
             </div>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-              <button disabled={manRunning} onClick={() => setManRunning(true)} style={{ background: '#d97706' }}>▶ Bắt đầu</button>
-              <button disabled={!manRunning} onClick={() => setManRunning(false)} className="secondary">⏸ Tạm dừng</button>
-              <button onClick={() => { setManRunning(false); setManSec(0); }} className="secondary">⏹ Đặt lại</button>
+              <button disabled={manRunning} onClick={() => setManRunning(true)} style={{ background: '#d97706' }}>Bắt đầu</button>
+              <button disabled={!manRunning} onClick={() => setManRunning(false)} className="secondary">Tạm dừng</button>
+              <button onClick={() => { setManRunning(false); setManSec(0); }} className="secondary">Đặt lại</button>
             </div>
             <label className="drop" style={{ background: 'white' }}>
-              <span>📦 Tải Task_Manual.zip từ CVAT</span>
+              <span>Tải tệp Task_Manual.zip từ CVAT</span>
               <input
                 disabled={loading}
                 type="file"
@@ -199,22 +199,22 @@ export default function BenchmarkDashboard({
                 }}
               />
             </label>
-            {hasMan && <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: 600 }}>✓ Đã có dữ liệu nhãn</span>}
+            {hasMan && <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: 600 }}>Đã nạp dữ liệu</span>}
           </div>
 
           {/* LƯỢT 3: AI DỰ ĐOÁN (AUTO RUN) */}
           <div style={{ background: '#f8fafc', padding: '16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-            <h3 style={{ margin: '0 0 8px', color: '#dc2626' }}>🤖 3. Dự Đoán AI (AI-Only)</h3>
-            <p className="muted" style={{ fontSize: '12px' }}>Mô hình chạy suy luận tự động (YOLOv8/Colab) không có người can thiệp.</p>
+            <h3 style={{ margin: '0 0 8px', color: '#dc2626' }}>3. Mô hình tự động (AI-Only)</h3>
+            <p className="muted" style={{ fontSize: '12px' }}>Mô hình chạy suy luận tự động hoàn toàn, không có can thiệp của con người.</p>
             <div style={{ margin: '20px 0', color: '#64748b', fontSize: '13px' }}>
               Thời gian suy luận: <strong>~0.05s / ảnh</strong>
             </div>
             <label className="drop" style={{ background: 'white', marginTop: '24px' }}>
-              <span>📦 Tải Task_AI.zip từ CVAT / Colab</span>
+              <span>Tải tệp kết quả AI (JSON hoặc ZIP)</span>
               <input
                 disabled={loading}
                 type="file"
-                accept=".zip"
+                accept=".zip,.json"
                 onChange={e => {
                   const f = e.target.files?.[0];
                   if (f) void handleUploadZip(f, 'ai');
@@ -222,7 +222,7 @@ export default function BenchmarkDashboard({
                 }}
               />
             </label>
-            {hasAi && <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: 600 }}>✓ Đã có dữ liệu nhãn</span>}
+            {hasAi && <span style={{ color: '#16a34a', fontSize: '12px', fontWeight: 600 }}>Đã nạp dữ liệu</span>}
           </div>
         </div>
 
@@ -232,18 +232,18 @@ export default function BenchmarkDashboard({
             <input value={annotator} onChange={e => setAnnotator(e.target.value)} />
           </label>
           <span style={{ fontSize: '12px', color: '#64748b' }}>
-            Ground Truth: {hasGt ? '✅ Đã nạp' : '⚠️ Chưa có (hãy nạp ở Tab 01)'}
+            Ground Truth: {hasGt ? 'Đã nạp' : 'Chưa thiết lập'}
           </span>
         </div>
       </section>
 
       {/* KHỐI 2: KÍCH HOẠT SO SÁNH BENCHMARK */}
-      <section className="panel" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+      <section className="panel" style={{ background: '#f8fafc', border: '1px solid #e2e8f0' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
           <div>
-            <h2 style={{ margin: '0 0 6px', color: '#166534' }}>🚀 Bắt Đầu So Sánh Đối Đầu 3 Phương Pháp</h2>
+            <h2 style={{ margin: '0 0 6px', color: '#0f172a' }}>Đánh giá và so sánh phương pháp</h2>
             <p className="muted" style={{ margin: 0 }}>
-              Sử dụng thuật toán Hungarian matching ghép cặp 1-1 và áp dụng hệ số phạt ngữ nghĩa BDD100K.
+              Sử dụng thuật toán Hungarian matching ghép cặp 1-1 và ma trận ngữ nghĩa BDD100K.
             </p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -259,81 +259,65 @@ export default function BenchmarkDashboard({
                 style={{ width: '120px' }}
               />
             </label>
-            <button disabled={loading || !hasGt} onClick={() => void runBenchmark()} style={{ background: '#16a34a', fontSize: '15px' }}>
-              Chạy Benchmark Ngay ➔
+            <button disabled={loading || !hasGt} onClick={() => void runBenchmark()} style={{ background: '#0f766e', fontSize: '14px' }}>
+              Thực hiện đối sánh
             </button>
           </div>
         </div>
-        {status && <p style={{ margin: '12px 0 0', fontWeight: 600, color: status.startsWith('❌') ? '#dc2626' : '#15803d' }}>{status}</p>}
+        {status && <p style={{ margin: '12px 0 0', fontWeight: 600, color: status.startsWith('Lỗi') ? '#dc2626' : '#15803d' }}>{status}</p>}
       </section>
 
       {/* KHỐI 3: KẾT QUẢ BENCHMARK DASHBOARD */}
       {benchmark && (
         <>
-          {/* BANNER KẾT LUẬN CÔNG SỨC TIẾT KIỆM ĐƯỢC */}
-          {benchmark.tradeoff.effort_saved_percent !== undefined && (
-            <div style={{ background: 'linear-gradient(135deg, #0284c7, #0f766e)', color: 'white', padding: '20px 24px', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <span style={{ textTransform: 'uppercase', fontSize: '11px', letterSpacing: '1.5px', opacity: 0.9 }}>Kết Luận Đề Tài Đột Phá</span>
-                <h3 style={{ margin: '4px 0 0', fontSize: '22px' }}>
-                  🎉 Mô hình AI Pre-label giúp con người <strong>TIẾT KIỆM {benchmark.tradeoff.effort_saved_percent}% CÔNG SỨC</strong>!
-                </h3>
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <span style={{ fontSize: '32px', fontWeight: 800 }}>{benchmark.tradeoff.speedup_factor}x</span>
-                <span style={{ display: 'block', fontSize: '12px', opacity: 0.9 }}>Tăng tốc độ làm nhãn</span>
-              </div>
-            </div>
-          )}
-
-          {/* 3 THẺ ĐỐI ĐẦU HERO CARDS */}
+          {/* 3 THẺ TỔNG QUAN CHỈ SỐ */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '18px' }}>
             {/* THẺ 1: MANUAL */}
-            <div className="panel" style={{ margin: 0, borderTop: '4px solid #d97706' }}>
-              <span style={{ color: '#d97706', fontWeight: 700, fontSize: '12px' }}>01 · THỦ CÔNG (MANUAL)</span>
-              <h3 style={{ margin: '8px 0 16px', fontSize: '20px' }}>Con Người Vẽ Tay</h3>
+            <div className="panel" style={{ margin: 0, borderTop: '3px solid #d97706' }}>
+              <span style={{ color: '#d97706', fontWeight: 600, fontSize: '12px', textTransform: 'uppercase' }}>1. Thủ công (Manual)</span>
+              <h3 style={{ margin: '8px 0 16px', fontSize: '18px' }}>Con người vẽ tay</h3>
               <div className="metrics" style={{ gap: '10px' }}>
                 <div><strong>{benchmark.methods.manual?.mean_iou ?? 'N/A'}</strong><span>Mean IoU</span></div>
                 <div><strong>{benchmark.methods.manual ? `${(benchmark.methods.manual.f1 * 100).toFixed(1)}%` : 'N/A'}</strong><span>F1-Score</span></div>
                 <div><strong>{benchmark.methods.manual ? `${benchmark.methods.manual.time_per_image}s` : 'N/A'}</strong><span>Giây / ảnh</span></div>
               </div>
-              <p className="muted" style={{ fontSize: '12px', marginTop: '12px' }}>
-                Tốc độ: <strong>{benchmark.methods.manual?.images_per_hour ?? 0} ảnh/giờ</strong>. Chất lượng cao nhưng tốn thời gian nhất.
-              </p>
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '12px' }}>
+                Năng suất: <strong>{benchmark.methods.manual?.images_per_hour ?? 0} ảnh/giờ</strong>
+              </div>
             </div>
 
             {/* THẺ 2: AI ONLY */}
-            <div className="panel" style={{ margin: 0, borderTop: '4px solid #dc2626' }}>
-              <span style={{ color: '#dc2626', fontWeight: 700, fontSize: '12px' }}>02 · AI TỰ ĐỘNG (AI-ONLY)</span>
-              <h3 style={{ margin: '8px 0 16px', fontSize: '20px' }}>Mô Hình Tự Động</h3>
+            <div className="panel" style={{ margin: 0, borderTop: '3px solid #dc2626' }}>
+              <span style={{ color: '#dc2626', fontWeight: 600, fontSize: '12px', textTransform: 'uppercase' }}>2. Mô hình tự động (AI-Only)</span>
+              <h3 style={{ margin: '8px 0 16px', fontSize: '18px' }}>Mô hình suy luận</h3>
               <div className="metrics" style={{ gap: '10px' }}>
                 <div><strong>{benchmark.methods.ai?.mean_iou ?? 'N/A'}</strong><span>Mean IoU</span></div>
                 <div><strong>{benchmark.methods.ai ? `${(benchmark.methods.ai.f1 * 100).toFixed(1)}%` : 'N/A'}</strong><span>F1-Score</span></div>
-                <div><strong>{benchmark.methods.ai ? `0.05s` : 'N/A'}</strong><span>Giây / ảnh</span></div>
+                <div><strong>{benchmark.methods.ai ? `${benchmark.methods.ai.time_per_image}s` : 'N/A'}</strong><span>Giây / ảnh</span></div>
               </div>
-              <p className="muted" style={{ fontSize: '12px', marginTop: '12px' }}>
-                Vẽ thừa (FP): <strong>{benchmark.methods.ai?.fp ?? 0}</strong>, Bỏ sót (FN): <strong>{benchmark.methods.ai?.fn ?? 0}</strong>. Siêu nhanh nhưng dễ lỗi.
-              </p>
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '12px' }}>
+                Vẽ thừa: <strong>{benchmark.methods.ai?.fp ?? 0} FP</strong> | Bỏ sót: <strong>{benchmark.methods.ai?.fn ?? 0} FN</strong>
+              </div>
             </div>
 
             {/* THẺ 3: ASSISTED */}
-            <div className="panel" style={{ margin: 0, borderTop: '4px solid #0284c7' }}>
-              <span style={{ color: '#0284c7', fontWeight: 700, fontSize: '12px' }}>03 · KẾT HỢP (AI-ASSISTED)</span>
-              <h3 style={{ margin: '8px 0 16px', fontSize: '20px' }}>AI + Người Sửa</h3>
+            <div className="panel" style={{ margin: 0, borderTop: '3px solid #0284c7' }}>
+              <span style={{ color: '#0284c7', fontWeight: 600, fontSize: '12px', textTransform: 'uppercase' }}>3. Hỗ trợ mô hình (Assisted)</span>
+              <h3 style={{ margin: '8px 0 16px', fontSize: '18px' }}>Mô hình gợi ý + Người sửa</h3>
               <div className="metrics" style={{ gap: '10px' }}>
                 <div><strong>{benchmark.methods.assisted?.mean_iou ?? 'N/A'}</strong><span>Mean IoU</span></div>
                 <div><strong>{benchmark.methods.assisted ? `${(benchmark.methods.assisted.f1 * 100).toFixed(1)}%` : 'N/A'}</strong><span>F1-Score</span></div>
                 <div><strong>{benchmark.methods.assisted ? `${benchmark.methods.assisted.time_per_image}s` : 'N/A'}</strong><span>Giây / ảnh</span></div>
               </div>
-              <p className="muted" style={{ fontSize: '12px', marginTop: '12px' }}>
-                Tốc độ: <strong>{benchmark.methods.assisted?.images_per_hour ?? 0} ảnh/giờ</strong>. 🏆 <em>Điểm cân bằng tối ưu nhất!</em>
-              </p>
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '12px' }}>
+                Năng suất: <strong>{benchmark.methods.assisted?.images_per_hour ?? 0} ảnh/giờ</strong>
+              </div>
             </div>
           </div>
 
-          {/* BẢNG ĐỐI ĐẦU KHOA HỌC CHI TIẾT */}
+          {/* BẢNG ĐỐI CHIẾU CHỈ SỐ CHI TIẾT */}
           <section className="panel">
-            <h2>📊 Bảng Đối Chiếu Chỉ Số Khoa Học (Benchmark Matrix)</h2>
+            <h2>Bảng chỉ số đánh giá (Benchmark Matrix)</h2>
             <table>
               <thead>
                 <tr>
@@ -342,10 +326,10 @@ export default function BenchmarkDashboard({
                   <th>Precision</th>
                   <th>Recall</th>
                   <th>F1-Score</th>
-                  <th>Vẽ Thừa (FP)</th>
-                  <th>Bỏ Sót (FN)</th>
-                  <th>Thời Gian / Ảnh</th>
-                  <th>Năng Suất (ảnh/giờ)</th>
+                  <th>Vẽ thừa (FP)</th>
+                  <th>Bỏ sót (FN)</th>
+                  <th>Thời gian / ảnh</th>
+                  <th>Năng suất (ảnh/giờ)</th>
                 </tr>
               </thead>
               <tbody>
@@ -354,7 +338,7 @@ export default function BenchmarkDashboard({
                   if (!data) return null;
                   return (
                     <tr key={m}>
-                      <td><strong>{m === 'manual' ? '1. Thủ công (Manual)' : m === 'ai' ? '2. AI Tự động (AI-Only)' : '3. AI Hỗ trợ (Assisted)'}</strong></td>
+                      <td><strong>{m === 'manual' ? '1. Thủ công (Manual)' : m === 'ai' ? '2. Mô hình tự động (AI-Only)' : '3. Hỗ trợ mô hình (Assisted)'}</strong></td>
                       <td>{data.mean_iou}</td>
                       <td>{(data.precision * 100).toFixed(1)}%</td>
                       <td>{(data.recall * 100).toFixed(1)}%</td>
@@ -374,9 +358,9 @@ export default function BenchmarkDashboard({
 
       {/* KHỐI 4: TRÌNH SOI ẢNH ĐỐI CHIẾU TRỰC QUAN (VISUALIZER) */}
       <section className="panel">
-        <h2>🔍 Trình Soi Ảnh Đối Chiếu Trực Quan 3 Màu Nhãn</h2>
+        <h2>Trực quan hóa đối chiếu nhãn đối tượng</h2>
         <p className="muted">
-          Chọn ảnh để xem trực quan: Xanh lá (Ground Truth chuẩn), Đỏ (AI dự đoán ban đầu), Xanh dương (Người đã sửa lại).
+          Lựa chọn các lớp nhãn để đối chiếu bounding box trực tiếp trên từng bức ảnh mẫu.
         </p>
 
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
@@ -387,21 +371,25 @@ export default function BenchmarkDashboard({
             </select>
           </label>
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '16px' }}>
-            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '6px', color: '#16a34a' }}>
+            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
               <input type="checkbox" checked={showLayers.ground_truth} onChange={e => setShowLayers(s => ({ ...s, ground_truth: e.target.checked }))} />
-              🟩 Ground Truth
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
+              Ground Truth
             </label>
-            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '6px', color: '#dc2626' }}>
+            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
               <input type="checkbox" checked={showLayers.ai} onChange={e => setShowLayers(s => ({ ...s, ai: e.target.checked }))} />
-              🟥 AI Dự đoán
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444', display: 'inline-block' }} />
+              AI Dự đoán
             </label>
-            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '6px', color: '#0284c7' }}>
+            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
               <input type="checkbox" checked={showLayers.assisted} onChange={e => setShowLayers(s => ({ ...s, assisted: e.target.checked }))} />
-              🟦 Đã sửa (Assisted)
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#0284c7', display: 'inline-block' }} />
+              Đã sửa (Assisted)
             </label>
-            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '6px', color: '#d97706' }}>
+            <label style={{ flexDirection: 'row', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
               <input type="checkbox" checked={showLayers.manual} onChange={e => setShowLayers(s => ({ ...s, manual: e.target.checked }))} />
-              🟧 Vẽ tay (Manual)
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }} />
+              Vẽ tay (Manual)
             </label>
           </div>
         </div>

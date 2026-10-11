@@ -7,20 +7,28 @@ from uuid import uuid4
 
 from fastapi import Depends, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from PIL import Image, UnidentifiedImageError
-from pydantic import ValidationError
+from pydantic import BaseModel, ValidationError
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
 
-from .adapters import parse_cvat_coco_zip
+from .adapters import parse_bdd100k_json, parse_cvat_coco_zip
 from .db import STORAGE, get_session, init_db
 from .evaluation import compute_benchmark_comparison
 from .models import Asset, LabelSet, Project
 from .schemas import LabelBundle, ProjectCreate
+from .wizard import (
+    create_benchmark_from_zip,
+    create_benchmark_sample,
+    create_images_zip,
+    export_ai_as_cvat_coco,
+    validate_and_save_ai,
+)
+
+MAX_FILE_BYTES = 256 * 1024 * 1024
 
 
-MAX_FILE_BYTES = 32 * 1024 * 1024
 
 @asynccontextmanager
 async def lifespan(app):
@@ -165,14 +173,28 @@ def save_bundle(project_id: str, source: str, bundle: LabelBundle, session: Sess
 
 @app.post("/api/projects/{project_id}/imports/{source}", status_code=201)
 async def import_labels(project_id: str, source: str, file: UploadFile = File(...), session: Session = Depends(get_session)):
-    if source not in {"ground_truth", "ai"}:
-        raise HTTPException(422, "Import chỉ hỗ trợ ground_truth hoặc ai")
+    if source not in {"ground_truth", "ai", "manual", "assisted"}:
+        raise HTTPException(422, "Chỉ hỗ trợ ground_truth, ai, manual hoặc assisted")
+    project = get_project(project_id, session)
     data = await read_limited(file)
     try:
         bundle = LabelBundle.model_validate_json(data)
-    except ValidationError as exc:
-        raise HTTPException(422, str(exc))
+    except ValidationError:
+        try:
+            raw_json = json.loads(data)
+            project_assets = {a.name for a in session.exec(select(Asset).where(Asset.project_id == project_id)).all()}
+            bundle = parse_bdd100k_json(
+                raw_json,
+                project_classes=project.classes,
+                task=project.task,
+                bundle_name=f"{source.upper()} · BDD100K Import",
+                source=source,
+                valid_assets=project_assets,
+            )
+        except Exception as exc:
+            raise HTTPException(422, f"Không thể đọc tệp theo chuẩn M49 hoặc BDD100K: {exc}")
     return save_bundle(project_id, source, bundle, session)
+
 
 @app.post("/api/projects/{project_id}/annotations/{source}", status_code=201)
 def save_annotation(project_id: str, source: str, body: LabelBundle, session: Session = Depends(get_session)):
@@ -284,4 +306,66 @@ def visualize_asset(project_id: str, asset_name: str, session: Session = Depends
                     break
 
     return {"asset_name": asset_name, "layers": layers}
+
+
+class SplitRequest(BaseModel):
+    project_name: str = "BDD100K Benchmark"
+    sample_count: int = 10
+
+
+@app.post("/api/benchmark/split")
+def api_benchmark_split(body: SplitRequest, session: Session = Depends(get_session)):
+    try:
+        return create_benchmark_sample(body.project_name, body.sample_count, session)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+
+
+@app.post("/api/benchmark/upload-custom-zip")
+async def api_upload_custom_zip(
+    project_name: str = Form("Dự Án Tùy Chỉnh"),
+    file: UploadFile = File(...),
+    session: Session = Depends(get_session),
+):
+    data = await read_limited(file)
+    try:
+        return create_benchmark_from_zip(project_name, data, session)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+
+
+@app.get("/api/benchmark/download-images/{project_id}")
+def api_download_images(project_id: str, session: Session = Depends(get_session)):
+    try:
+        zip_bytes = create_images_zip(project_id, session)
+        return Response(
+            content=zip_bytes,
+            media_type="application/zip",
+            headers={"Content-Disposition": f"attachment; filename=bdd100k_{project_id}_images.zip"},
+        )
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+
+
+@app.post("/api/benchmark/validate-ai/{project_id}")
+async def api_validate_ai(project_id: str, file: UploadFile = File(...), session: Session = Depends(get_session)):
+    data = await read_limited(file)
+    try:
+        return validate_and_save_ai(project_id, data, session)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc))
+
+
+@app.get("/api/benchmark/cvat-prelabel/{project_id}")
+def api_cvat_prelabel(project_id: str, session: Session = Depends(get_session)):
+    try:
+        zip_bytes = export_ai_as_cvat_coco(project_id, session)
+        return Response(
+            content=zip_bytes,
+            media_type="application/zip",
+            headers={"Content-Disposition": f"attachment; filename=cvat_prelabel_{project_id}.zip"},
+        )
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+
 

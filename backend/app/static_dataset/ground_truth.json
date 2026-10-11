@@ -1,0 +1,1736 @@
+{
+  "schema_version": "1.0",
+  "task": "detection_2d",
+  "name": "BDD100K 10 Samples Ground Truth",
+  "annotator": "Ground Truth Benchmark",
+  "parent_id": null,
+  "run": {},
+  "samples": [
+    {
+      "asset_name": "b1c81faa-3df17267.jpg",
+      "objects": [
+        {
+          "id": "gt-b1c81faa-3df17267.jpg-1",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              819.46,
+              280.08,
+              889.24,
+              312.74
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-3df17267.jpg-2",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1027.3,
+              290.47,
+              1052.54,
+              306.8
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-3df17267.jpg-3",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1061.44,
+              234.06,
+              1134.19,
+              265.24
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-3df17267.jpg-4",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1005.03,
+              263.75,
+              1030.27,
+              280.08
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1c81faa-c80764c5.jpg",
+      "objects": [
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-1",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              648.24,
+              150.92,
+              678.78,
+              162.6
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-2",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              501.81,
+              167.09,
+              588.05,
+              223.69
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-3",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              587.15,
+              159.9,
+              677.88,
+              223.69
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              472.75,
+              274.44,
+              488.02,
+              287.02
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-5",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              501.5,
+              271.75,
+              524.85,
+              287.92
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-6",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              533.84,
+              276.24,
+              547.31,
+              287.92
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-7",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              563.48,
+              278.04,
+              574.26,
+              287.02
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-8",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              577.85,
+              279.83,
+              595.82,
+              287.92
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-9",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              713.5,
+              281.63,
+              727.88,
+              291.51
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-10",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              700.93,
+              281.63,
+              715.3,
+              294.21
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-11",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              672.18,
+              278.93,
+              694.64,
+              292.41
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-12",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              630.86,
+              281.63,
+              651.52,
+              296.0
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-13",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              611.99,
+              281.63,
+              646.13,
+              306.78
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c81faa-c80764c5.jpg-14",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              356.86,
+              264.56,
+              448.49,
+              325.65
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1c9c847-3bda4659.jpg",
+      "objects": [
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-1",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              623.6,
+              308.23,
+              635.36,
+              315.09
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-2",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              325.73,
+              342.94,
+              376.68,
+              384.1
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-3",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              245.38,
+              333.15,
+              336.5,
+              389.98
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              163.07,
+              341.96,
+              267.92,
+              404.67
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-5",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              30.79,
+              335.1,
+              176.79,
+              416.43
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-6",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              626.96,
+              334.13,
+              644.59,
+              347.84
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-7",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              684.77,
+              328.25,
+              713.18,
+              353.72
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-8",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              705.48,
+              333.01,
+              714.3,
+              353.58
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-9",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              710.38,
+              328.11,
+              726.06,
+              358.48
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-10",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              716.26,
+              326.15,
+              741.74,
+              369.26
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-11",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              728.02,
+              318.31,
+              777.01,
+              388.86
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-12",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              750.56,
+              332.03,
+              794.65,
+              396.69
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-13",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              762.31,
+              301.65,
+              933.79,
+              437.85
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-14",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              827.68,
+              318.31,
+              1202.96,
+              520.15
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-15",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              385.5,
+              337.06,
+              448.21,
+              373.32
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-16",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              600.64,
+              335.1,
+              629.06,
+              351.76
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-17",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              670.21,
+              334.13,
+              688.83,
+              345.88
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-18",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              453.67,
+              253.64,
+              593.78,
+              409.57
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1c9c847-3bda4659.jpg-19",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              0.0,
+              313.41,
+              41.57,
+              431.97
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1ca8418-84a133a0.jpg",
+      "objects": [
+        {
+          "id": "gt-b1ca8418-84a133a0.jpg-1",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              448.49,
+              121.91,
+              470.45,
+              144.98
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ca8418-84a133a0.jpg-2",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              637.03,
+              205.38,
+              652.4,
+              229.55
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ca8418-84a133a0.jpg-3",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              198.44,
+              177.93,
+              230.29,
+              210.87
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ca8418-84a133a0.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              437.5,
+              220.76,
+              696.7,
+              429.44
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ca8418-84a133a0.jpg-5",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1134.93,
+              198.79,
+              1276.61,
+              331.69
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ca8418-84a133a0.jpg-6",
+          "category": "motor",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1203.02,
+              230.64,
+              1275.51,
+              329.49
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1cac6a7-04e33135.jpg",
+      "objects": [
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-1",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              339.39,
+              410.51,
+              366.84,
+              431.72
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-2",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              308.2,
+              405.52,
+              328.16,
+              429.23
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-3",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              296.97,
+              406.77,
+              311.94,
+              431.72
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              267.02,
+              414.25,
+              281.99,
+              432.97
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-5",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              244.56,
+              420.49,
+              272.01,
+              451.69
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-6",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              222.1,
+              415.5,
+              254.54,
+              456.68
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-7",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              182.17,
+              413.01,
+              240.82,
+              464.16
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-8",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              118.54,
+              415.5,
+              202.14,
+              469.16
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-9",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              366.84,
+              404.27,
+              384.31,
+              426.73
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-10",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              497.85,
+              396.79,
+              536.53,
+              444.2
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-11",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              381.81,
+              375.57,
+              514.07,
+              509.08
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-12",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              698.74,
+              406.77,
+              736.17,
+              459.17
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-13",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              777.35,
+              413.01,
+              913.36,
+              504.09
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-14",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              489.12,
+              406.77,
+              746.16,
+              602.67
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-15",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              2.5,
+              421.74,
+              138.5,
+              497.85
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cac6a7-04e33135.jpg-16",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1245.26,
+              451.69,
+              1278.95,
+              591.44
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1cd1e94-26dd524f.jpg",
+      "objects": [
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-1",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              619.4,
+              408.97,
+              707.43,
+              480.5
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-2",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              734.94,
+              392.47,
+              826.64,
+              465.83
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-3",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              573.55,
+              399.8,
+              630.4,
+              443.82
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              551.54,
+              397.97,
+              580.89,
+              432.82
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-5",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              151.74,
+              394.3,
+              281.95,
+              443.82
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-6",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              522.2,
+              337.45,
+              536.87,
+              353.96
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-7",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              892.66,
+              286.1,
+              909.16,
+              311.77
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-8",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              901.83,
+              311.77,
+              929.34,
+              333.78
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-9",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              395.65,
+              399.8,
+              448.84,
+              427.31
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-10",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              476.35,
+              394.3,
+              505.69,
+              414.48
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-11",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              503.86,
+              396.14,
+              527.7,
+              412.64
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-12",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              3.19,
+              418.14,
+              21.53,
+              458.49
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-13",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              344.3,
+              399.8,
+              368.15,
+              412.64
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-14",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              278.28,
+              397.97,
+              318.63,
+              421.81
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-15",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              640.19,
+              335.83,
+              651.18,
+              355.37
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-16",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              740.46,
+              356.13,
+              747.51,
+              371.41
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-17",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              715.07,
+              376.11,
+              733.88,
+              383.16
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-18",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              778.07,
+              349.07,
+              794.52,
+              356.13
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-26dd524f.jpg-19",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              785.12,
+              362.0,
+              798.05,
+              372.58
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1cd1e94-549d0bfe.jpg",
+      "objects": [
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-1",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              603.57,
+              393.89,
+              624.54,
+              410.37
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-2",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              684.44,
+              389.4,
+              732.37,
+              425.34
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-3",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              608.44,
+              381.16,
+              693.8,
+              463.53
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              780.67,
+              397.64,
+              925.95,
+              506.97
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-5",
+          "category": "bus",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              295.04,
+              283.66,
+              544.86,
+              467.88
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-6",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              566.73,
+              386.4,
+              596.68,
+              413.36
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-7",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              124.31,
+              290.55,
+              154.26,
+              317.51
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-8",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              163.25,
+              292.05,
+              188.71,
+              319.01
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-9",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1137.5,
+              302.91,
+              1162.96,
+              340.35
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-10",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              113.26,
+              227.01,
+              167.18,
+              244.98
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-11",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              135.73,
+              257.37,
+              192.64,
+              277.93
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-12",
+          "category": "person",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1197.67,
+              393.89,
+              1235.11,
+              497.23
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1cd1e94-549d0bfe.jpg-13",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              1071.86,
+              301.04,
+              1094.33,
+              333.98
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1ceb32e-3f481b43.jpg",
+      "objects": [
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-1",
+          "category": "person",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              937.81,
+              292.95,
+              952.66,
+              324.0
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-2",
+          "category": "person",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              922.96,
+              294.3,
+              939.16,
+              330.75
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-3",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              798.76,
+              284.85,
+              928.36,
+              342.9
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              778.6,
+              290.25,
+              821.71,
+              334.8
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-5",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              673.21,
+              282.15,
+              751.51,
+              334.8
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-6",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              623.26,
+              291.6,
+              725.86,
+              349.65
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-7",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              468.01,
+              276.75,
+              557.11,
+              349.65
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-8",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              380.26,
+              286.2,
+              466.66,
+              345.6
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-9",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              276.31,
+              280.8,
+              361.36,
+              342.9
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-3f481b43.jpg-10",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              176.41,
+              276.75,
+              266.86,
+              341.55
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1ceb32e-51852abe.jpg",
+      "objects": [
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-1",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              874.36,
+              0.0,
+              952.66,
+              29.7
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-2",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              901.36,
+              49.95,
+              947.26,
+              91.8
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-3",
+          "category": "traffic sign",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              196.66,
+              225.45,
+              220.96,
+              253.8
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-4",
+          "category": "traffic light",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              461.26,
+              240.3,
+              469.36,
+              252.45
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-5",
+          "category": "person",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              586.81,
+              264.6,
+              628.66,
+              413.1
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-6",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              524.71,
+              278.1,
+              544.96,
+              345.6
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-7",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              535.51,
+              278.1,
+              604.36,
+              353.7
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-8",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              553.06,
+              291.6,
+              601.66,
+              361.8
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-9",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              573.31,
+              288.9,
+              643.51,
+              386.1
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-10",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              607.06,
+              243.0,
+              898.66,
+              477.9
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-11",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              369.46,
+              259.2,
+              528.76,
+              396.9
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-12",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              252.01,
+              288.9,
+              320.86,
+              329.4
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-13",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              0.0,
+              294.3,
+              61.66,
+              399.6
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-51852abe.jpg-14",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              739.36,
+              89.1,
+              1279.36,
+              716.85
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    },
+    {
+      "asset_name": "b1ceb32e-813f84b2.jpg",
+      "objects": [
+        {
+          "id": "gt-b1ceb32e-813f84b2.jpg-1",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              654.25,
+              289.84,
+              719.27,
+              320.69
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-813f84b2.jpg-2",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              642.12,
+              287.63,
+              689.51,
+              312.98
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-813f84b2.jpg-3",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              530.82,
+              286.53,
+              581.51,
+              307.47
+            ]
+          },
+          "confidence": null
+        },
+        {
+          "id": "gt-b1ceb32e-813f84b2.jpg-4",
+          "category": "car",
+          "geometry": {
+            "kind": "bbox2d",
+            "xyxy": [
+              815.14,
+              297.55,
+              1208.57,
+              418.78
+            ]
+          },
+          "confidence": null
+        }
+      ],
+      "active_seconds": null
+    }
+  ]
+}
