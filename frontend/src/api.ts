@@ -13,3 +13,12 @@ export function upload<T>(path: string, file: File) {
   const body = new FormData(); body.append('file', file);
   return api<T>(path, { method: 'POST', body });
 }
+export function uploadZip<T>(path: string, file: File, meta?: { annotator?: string; parent_id?: string; total_seconds?: number }) {
+  const body = new FormData();
+  body.append('file', file);
+  if (meta?.annotator) body.append('annotator', meta.annotator);
+  if (meta?.parent_id) body.append('parent_id', meta.parent_id);
+  if (meta?.total_seconds !== undefined) body.append('total_seconds', String(meta.total_seconds));
+  return api<T>(path, { method: 'POST', body });
+}
+

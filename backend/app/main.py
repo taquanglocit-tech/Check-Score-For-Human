@@ -5,7 +5,7 @@ from io import BytesIO
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import Depends, FastAPI, File, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from PIL import Image, UnidentifiedImageError
@@ -13,9 +13,12 @@ from pydantic import ValidationError
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
 
+from .adapters import parse_cvat_coco_zip
 from .db import STORAGE, get_session, init_db
+from .evaluation import compute_benchmark_comparison
 from .models import Asset, LabelSet, Project
 from .schemas import LabelBundle, ProjectCreate
+
 
 MAX_FILE_BYTES = 32 * 1024 * 1024
 
@@ -195,4 +198,90 @@ def summary(project_id: str, session: Session = Depends(get_session)):
     project = get_project(project_id, session)
     assets = session.exec(select(Asset).where(Asset.project_id == project_id)).all()
     labels = session.exec(select(LabelSet).where(LabelSet.project_id == project_id)).all()
-    return {"project": project, "assets": len(assets), "label_sets": {source: sum(r.source == source for r in labels) for source in ["ground_truth", "ai", "manual", "assisted"]}, "evaluation_status": "not_implemented"}
+    source_counts = {source: sum(r.source == source for r in labels) for source in ["ground_truth", "ai", "manual", "assisted"]}
+    has_gt = source_counts["ground_truth"] > 0
+    has_preds = any(source_counts[s] > 0 for s in ["manual", "ai", "assisted"])
+    eval_status = "ready" if (has_gt and has_preds) else "waiting_for_data"
+    return {"project": project, "assets": len(assets), "label_sets": source_counts, "evaluation_status": eval_status}
+
+@app.post("/api/projects/{project_id}/imports-zip/{source}", status_code=201)
+async def import_zip_labels(
+    project_id: str,
+    source: str,
+    file: UploadFile = File(...),
+    annotator: str | None = Form(None),
+    parent_id: str | None = Form(None),
+    total_seconds: float | None = Form(None),
+    session: Session = Depends(get_session),
+):
+    if source not in {"ground_truth", "ai", "manual", "assisted"}:
+        raise HTTPException(422, "Chỉ hỗ trợ ground_truth, ai, manual hoặc assisted")
+    project = get_project(project_id, session)
+    data = await read_limited(file)
+    default_annotator = (
+        annotator
+        or ("AI Model" if source == "ai" else "Ground Truth" if source == "ground_truth" else "Human Annotator")
+    )
+    try:
+        bundle = parse_cvat_coco_zip(
+            zip_bytes=data,
+            task=project.task,
+            bundle_name=f"{source.upper()} · CVAT COCO ZIP",
+            annotator=default_annotator,
+            parent_id=parent_id,
+            source=source,
+            total_seconds=total_seconds,
+        )
+    except ValueError as exc:
+        raise HTTPException(422, str(exc))
+    return save_bundle(project_id, source, bundle, session)
+
+@app.get("/api/projects/{project_id}/benchmark")
+def get_benchmark(project_id: str, iou_threshold: float = 0.5, session: Session = Depends(get_session)):
+    get_project(project_id, session)
+    labels = session.exec(
+        select(LabelSet)
+        .where(LabelSet.project_id == project_id)
+        .order_by(LabelSet.created_at.desc())
+    ).all()
+
+    # Lấy phiên bản mới nhất của từng nguồn
+    latest_by_source: dict[str, dict] = {}
+    for l in labels:
+        if l.source not in latest_by_source:
+            latest_by_source[l.source] = l.payload
+
+    if "ground_truth" not in latest_by_source:
+        raise HTTPException(400, "Dự án chưa có Ground Truth để so sánh.")
+
+    gt_payload = latest_by_source["ground_truth"]
+    bundles = {k: v for k, v in latest_by_source.items() if k != "ground_truth"}
+
+    if not bundles:
+        raise HTTPException(400, "Cần ít nhất một nguồn nhãn (manual, ai hoặc assisted) để so sánh.")
+
+    return compute_benchmark_comparison(gt_payload, bundles, iou_threshold=iou_threshold)
+
+@app.get("/api/projects/{project_id}/visualize/{asset_name}")
+def visualize_asset(project_id: str, asset_name: str, session: Session = Depends(get_session)):
+    get_project(project_id, session)
+    labels = session.exec(
+        select(LabelSet)
+        .where(LabelSet.project_id == project_id)
+        .order_by(LabelSet.created_at.desc())
+    ).all()
+
+    # Thu thập objects của asset_name từ phiên bản mới nhất của từng nguồn
+    layers: dict[str, list] = {"ground_truth": [], "ai": [], "manual": [], "assisted": []}
+    seen_sources = set()
+
+    for l in labels:
+        if l.source not in seen_sources:
+            seen_sources.add(l.source)
+            for sample in l.payload.get("samples", []):
+                if sample.get("asset_name") == asset_name:
+                    layers[l.source] = sample.get("objects", [])
+                    break
+
+    return {"asset_name": asset_name, "layers": layers}
+

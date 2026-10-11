@@ -3,6 +3,8 @@ import { api, postJSON, upload } from './api';
 import type { Asset, LabelSet, Project, Task } from './types';
 import { taskNames } from './types';
 import AnnotationWorkspace from './features/annotation/AnnotationWorkspace';
+import BenchmarkDashboard from './features/benchmark/BenchmarkDashboard';
+
 
 type Summary = { assets: number; label_sets: Record<string, number>; evaluation_status: string };
 export default function App() {
@@ -68,7 +70,7 @@ export default function App() {
         <section className="panel"><h2>Dữ liệu đã lưu · {assets.length}</h2><div className="gallery">{assets.map(a => <article key={a.id}>{a.kind === 'image' ? <img loading="lazy" src={a.url} alt={a.name}/> : <div className="cloud">POINT CLOUD</div>}<strong>{a.name}</strong><small>{a.width ? `${a.width} × ${a.height}` : a.kind}</small></article>)}</div>{!assets.length && <p className="muted">Chưa có dữ liệu.</p>}</section>
       </>}
       {project && tab === 'annotate' && <AnnotationWorkspace key={project.id} project={project} assets={assets} labels={labels} onSaved={refresh}/>}
-      {project && tab === 'results' && <section className="panel"><h2>Tình trạng thử nghiệm</h2><div className="metrics">{Object.entries(summary?.label_sets ?? {}).map(([source,count]) => <div key={source}><strong>{count}</strong><span>{source}</span></div>)}</div><p className="notice">Chưa tính IoU/mAP, thời gian tổng hợp hoặc chi phí. Các số trên chỉ là số phiên bản nhãn đã lưu, không phải điểm benchmark.</p><table><thead><tr><th>Bộ nhãn</th><th>Nguồn</th><th>Mã phiên bản</th></tr></thead><tbody>{labels.map(l => <tr key={l.id}><td>{l.name}</td><td>{l.source}</td><td><code>{l.id}</code></td></tr>)}</tbody></table></section>}
+      {project && tab === 'results' && <BenchmarkDashboard key={project.id} project={project} assets={assets} labels={labels} onRefresh={refresh} />}
     </main>
   </div>;
 }

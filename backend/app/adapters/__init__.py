@@ -1,4 +1,4 @@
-"""Adapters BDD100K/KITTI/model outputs -> app.schemas.LabelBundle.
+from .coco_zip import parse_cvat_coco_zip
 
-Chưa triển khai. Không import JSON nhãn gốc trực tiếp vào endpoint M49.
-"""
+__all__ = ["parse_cvat_coco_zip"]
+
